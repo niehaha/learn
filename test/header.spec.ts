@@ -5,7 +5,7 @@ const wrapper = shallowMount(Header)
 
 describe('测试header组件', function () {
     it('header', function (done) {
-        expect(wrapper.vm.$data.title).toEqual('我是header111')
+        expect(wrapper.vm.$data.title).toEqual('我是header')
         done() 
     })
 })
