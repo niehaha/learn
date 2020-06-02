@@ -1,4 +1,4 @@
-const typescript = require('rollup-plugin-typescript')
+const typescript = require('rollup-plugin-typescript2')
 const json = require('rollup-plugin-json')
 const resolve = require('rollup-plugin-node-resolve')
 const istanbul = require('rollup-plugin-istanbul')
