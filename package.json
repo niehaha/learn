@@ -53,6 +53,9 @@
     "@vue/test-utils": "^1.0.3"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-language": "^0.10.1",
+    "@types/mapbox-gl": "^1.10.2",
+    "mapbox-gl": "^1.10.1",
     "vue": "^2.6.11",
     "vue-property-decorator": "^8.4.2"
   },
