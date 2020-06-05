@@ -2,14 +2,15 @@ import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
-import jsx from 'rollup-plugin-jsx'
+// import jsx from 'rollup-plugin-jsx'
+import babel from '@rollup/plugin-babel'
 import replace from 'rollup-plugin-replace'
 import virtual from '@rollup/plugin-virtual'
 import commonjs from 'rollup-plugin-commonjs'
 import html from '@rollup/plugin-html'
 
-const getComponents  = require('./utils/get-components')
-const createEntry  = require('./utils/create-entry')
+const getComponents = require('./utils/get-components')
+const createEntry = require('./utils/create-entry')
 const bs = require("browser-sync").create()
 bs.init({
     server: "./.static"
@@ -20,9 +21,9 @@ export default {
     output: {
         file: '.static/index.js',
         format: 'iife',
-        sourcemap: true,    
+        sourcemap: true,
     },
-    watch:{
+    watch: {
         exclude: ['node_modules/**']
     },
     plugins: [
@@ -40,7 +41,10 @@ export default {
             'process.env.VUE_ENV': JSON.stringify('browser')
         }),
         typescript(),
-        jsx( {factory: 'this.$createElement'} ),
+        babel({
+            extensions: ['.ts', '.tsx']
+        }),
+        // jsx( {factory: 'this.$createElement'} ),
         html()
     ]
 }
