@@ -6,7 +6,7 @@ export default class App extends Vue{
         return (
             <div>
                 {/* <ssui-header></ssui-header> */}
-                <ssui-map-container  min-zoom={20} aaa='aaa'></ssui-map-container>
+                <ssui-map-container props={{minZoom:20,aaa:'aaa'}}   ></ssui-map-container>
             </div>
         )
     }
