@@ -3,9 +3,10 @@ const json = require('rollup-plugin-json')
 const resolve = require('rollup-plugin-node-resolve')
 const istanbul = require('rollup-plugin-istanbul')
 const postcss = require('rollup-plugin-postcss')
-const jsx = require('rollup-plugin-jsx')
+// const jsx = require('rollup-plugin-jsx')
 const replace = require('rollup-plugin-replace')
 const commonjs = require('rollup-plugin-commonjs')
+import babel from '@rollup/plugin-babel'
 
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
@@ -35,7 +36,10 @@ module.exports = function(config) {
                     'process.env.VUE_ENV': JSON.stringify('browser')
                 }),
                 typescript(),
-                jsx( {factory: 'this.$createElement'} ),
+                // jsx( {factory: 'this.$createElement'} ),
+                babel({
+                    extensions: ['.ts', '.tsx']
+                  }),
                 istanbul({
                     exclude: ['test/**/*.ts', 'node_modules/**/*.*', 'component/**/*.postcss']
                 }),

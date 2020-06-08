@@ -3,7 +3,8 @@ import json from "rollup-plugin-json";
 import { terser } from "rollup-plugin-terser";
 import resolve from "rollup-plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
-import jsx from "rollup-plugin-jsx";
+import babel from '@rollup/plugin-babel'
+// import jsx from "rollup-plugin-jsx";
 import virtual from "@rollup/plugin-virtual";
 import commonjs from "rollup-plugin-commonjs";
 
@@ -35,12 +36,15 @@ export default {
         exclude: ["client", "dist", "test"],    // 忽略的文件
       },
     }),
-    jsx({ factory: "this.$createElement" }),
+    // jsx({ factory: "this.$createElement" }),
     terser({
       // 压缩
       output: {
         comments: false,
       },
+    }),
+    babel({
+      extensions: ['.ts', '.tsx']
     }),
   ],
   external: ["vue"],

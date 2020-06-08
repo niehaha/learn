@@ -26,6 +26,7 @@
     "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 
     "jsx": "preserve",
-    "declaration": true          /* 导出类型声明*/
+    "declaration": true,          /* 导出类型声明*/
+    "target": "esnext"
   }
 }
