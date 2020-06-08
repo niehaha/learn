@@ -1,5 +1,6 @@
 import { Vue, Component, Ref, Prop, Emit } from 'vue-property-decorator'
 import mapboxGl from 'mapbox-gl'
+mapboxGl.accessToken = 'pk.eyJ1IjoicGlucGFydGRldiIsImEiOiJjajBqOXh0anAwMDFkMzNwbW5qMzVuZGo0In0.ltvQzboVtprxfeFAVOw1GA'
 import './index.postcss'
 import MapboxLanguage from '@mapbox/mapbox-gl-language'
 @Component({ name: "ssui-map-container" })
@@ -26,9 +27,11 @@ export default class MapContainer extends Vue {
   @Emit()
   reload() {
     console.log('reload in map component')
+    return this.map
   }
+
+
   mounted() {
-    mapboxGl.accessToken = 'pk.eyJ1IjoicGlucGFydGRldiIsImEiOiJjajBqOXh0anAwMDFkMzNwbW5qMzVuZGo0In0.ltvQzboVtprxfeFAVOw1GA'
     const { mapContainer, center, minZoom, zoom, mapStyle } = this
 
     this.map = new mapboxGl.Map({
@@ -48,10 +51,12 @@ export default class MapContainer extends Vue {
     const language = new MapboxLanguage({ defaultLanguage: "zh" })
     this.map.addControl(language)
   }
+  destroyed() {
+    // 销毁
+    if (this.map) { this.map.remove() }
+  }
 
   render() {
-    console.log(this)
-
     return <div ref="map" class='map'></div>
   }
 }
