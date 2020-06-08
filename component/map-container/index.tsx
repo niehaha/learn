@@ -26,7 +26,6 @@ export default class MapContainer extends Vue {
 
   @Emit()
   reload() {
-    console.log('reload in map component')
     return this.map
   }
 
@@ -44,7 +43,25 @@ export default class MapContainer extends Vue {
     })
     this.map.on('load', () => {
       console.log('load')
+      this.map?.addSource('AAA', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: "Feature",
+              properties: {},
+              geometry: {
+                type: "Point",
+                coordinates: [166.38, 39.90]
+              }
+            }
+          ]
+        }
+      })
       this.reload()
+
+
     })
 
     // 设置语言
