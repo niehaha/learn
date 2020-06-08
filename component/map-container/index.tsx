@@ -14,14 +14,16 @@ export default class MapContainer extends Vue {
   readonly mapContainer!: HTMLDivElement
 
   map?: mapboxGl.Map
-  
+
   mounted() {
-    console.log(this.$props);
-    
-    console.log('this.minZoom',this.minZoom);
+    console.log(this)
+
+    // console.log(this.$props)
+
+    // console.log('this.minZoom',this.minZoom)
     // console.log(this.aaa);
-    
-    
+
+
     // console.log('this.$props.minZoom',this.$props.minZoom);
 
     mapboxGl.accessToken = 'pk.eyJ1IjoicGlucGFydGRldiIsImEiOiJjajBqOXh0anAwMDFkMzNwbW5qMzVuZGo0In0.ltvQzboVtprxfeFAVOw1GA'
@@ -34,11 +36,13 @@ export default class MapContainer extends Vue {
       style: 'mapbox://styles/mapbox/streets-v9'
     })
     // 设置语言
-    let language = new MapboxLanguage({ defaultLanguage: "zh" });
-    this.map.addControl(language);
+    const language = new MapboxLanguage({ defaultLanguage: "zh" })
+    this.map.addControl(language)
   }
 
   render() {
+    console.log(this)
+
     return <div ref="map" class='map'></div>
   }
 }
