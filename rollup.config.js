@@ -3,7 +3,7 @@ import json from "rollup-plugin-json";
 import { terser } from "rollup-plugin-terser";
 import resolve from "rollup-plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
-import babel from '@rollup/plugin-babel'
+import babel from "@rollup/plugin-babel";
 // import jsx from "rollup-plugin-jsx";
 import virtual from "@rollup/plugin-virtual";
 import commonjs from "rollup-plugin-commonjs";
@@ -29,11 +29,13 @@ export default {
       extensions: [".postcss"],
     }),
     typescript({
-      tsconfigOverride: {   //  覆盖。就是覆盖tsconfig里的一些配置
+      tsconfigOverride: {
+        //  覆盖。就是覆盖tsconfig里的一些配置
         compilerOptions: {
-          declaration: true,    // 开启导出类型
+          declaration: true, // 开启导出类型
+          target: "esnext",
         },
-        exclude: ["client", "dist", "test"],    // 忽略的文件
+        exclude: ["client", "dist", "test"], // 忽略的文件
       },
     }),
     // jsx({ factory: "this.$createElement" }),
@@ -44,7 +46,7 @@ export default {
       },
     }),
     babel({
-      extensions: ['.ts', '.tsx']
+      extensions: [".ts", ".tsx"],
     }),
   ],
   external: ["vue"],
