@@ -35,6 +35,9 @@ export default {
     resolve(),
     postcss({
       extensions: [".postcss"],
+      config: {
+        path: "./build/postcss.config.js",
+      },
     }),
     replace({
       "process.env.NODE_ENV": JSON.stringify("development"),

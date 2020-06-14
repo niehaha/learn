@@ -27,6 +27,9 @@ export default {
     resolve(),
     postcss({
       extensions: [".postcss"],
+      config:{
+        path:'./build/postcss.config.js'
+      }
     }),
     typescript({
       tsconfigOverride: {

@@ -60,7 +60,7 @@
     "@types/mapbox-gl": "^1.10.2",
     "mapbox-gl": "^1.10.1",
     "vue": "^2.6.11",
-    "vue-property-decorator": "^8.4.2"
+    "vue-property-decorator": "8.4.2"
   },
   "peerDependenciesMeta": {
     "vue": {
